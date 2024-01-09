@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pharmacy Inventory System</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'css/alert.css') }}">
+
+</head>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert {{ category }}" id="alertMsg"><b>{{ message }}</b></div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% block content %}
+
+<body style="background-image: url(../static/medicine.jpg);">
+  <br />
+  <br />
+
+  <div class="container">
+
+    <div id="login-form">
+
+      <h3>Login</h3>
+
+      <fieldset>
+
+        <form id="form-login" action="{{ url_for('login') }}" method="POST">
+          <input type="text" name="username" autofocus id="username" placeholder="Username" required autocomplete="off">
+
+          <input type="password" name="password" id="password" placeholder="Password" required autocomplete="off">
+
+          <input type="submit" name="Login" value="Login">
+          
+        </form>
+
+      </fieldset>
+      <p style="color: white;">Don't have an Account? <a style="color: white;" href="{{ url_for('signup') }}"> Sign Up</a></p>
+
+    </div> <!-- end login-form -->
+
+  </div>
+  <script>
+    var alertEl = document.querySelector('#alertMsg')
+
+    if (alertEl) {
+      alertEl.addEventListener('click', function () {
+        this.remove()
+      })
+    }
+
+  </script>
+
+  <script type="text/javascript" src="assets/js/jquery-1.12.3.js"></script>
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="assets/js/regis.js"></script>
+
+
+</body>
+{% endblock %}
+
+</html>

@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS items;
+
+create TABLE items(
+	item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	item_code INTEGER NOT NULL,
+	item_name VARCHAR(100) NOT NULL,
+	brand_name VARCHAR(100) NOT NULL,
+	type TEXT NOT NULL,
+	stock INTEGER NOT NULL,
+	price FLOA NOT NULL,
+	unit TEXT NOT NULL,
+	expired DATE NOT NULL,
+	volume TEXT NOT NULL,
+	vol TEXT NOT NULL
+	);
+
+
+DROP TABLE IF EXISTS admin;
+create TABLE admin(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	username VARCHAR(25) NOT NULL,
+	password VARCHAR(25) NOT NULL,
+	first_name VARCHAR(30) NOT NULL,
+	last_name VARCHAR(30) NOT NULL,
+	contact_number VARCHAR(11) NOT NULL,
+	email_address VARCHAR(25) NOT NULL
+)

@@ -1,0 +1,61 @@
+
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Pharmacy Inventory System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css')}}">
+
+  </head>
+
+  {% block content %}
+    <body style="background-image: url(../static/medicine.jpg);">
+    <br/>
+    <br/>    
+
+      <div class="container">
+
+        <div id="login-form">
+
+        <h3>Register Form</h3>
+
+        <fieldset>
+
+          <form id="form-login" action="{{ url_for('signup') }}" method="POST">
+
+            <input type="text" name="first_name" id="first_name" placeholder="First Name" required autocomplete="off"> 
+            <input type="text" name="last_name" id="last_name" placeholder="Last Name" required autocomplete="off"> 
+
+            <input type="text" pattern="[0-9]+" maxlength="11" name="contact_number" id="contact_number" placeholder="Contact Number" required autocomplete="off"> 
+
+            <input type="text" name="email_address" id="email_address" placeholder="Email Address" required autocomplete="off"> 
+
+            <input type="text" name="username" autofocus id="username" placeholder="Username" required autocomplete="off"> 
+
+            <input type="password" name="password" id="password" placeholder="Password" required autocomplete="off">  
+
+            <input type="submit" name="signin" value="Register">
+          </form>
+
+        </fieldset>
+
+        <p style="color: black;">Already Have an Account? <a style="color: white;" href="/"> Login Here</a></p>
+
+        </div> <!-- end login-form -->
+
+      </div>
+
+
+      <script type="text/javascript" src="assets/js/jquery-1.12.3.js"></script>
+      <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="assets/js/regis.js"></script>
+
+
+    </body>
+  {% endblock %}
+</html>
+
+
+

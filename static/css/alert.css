@@ -1,0 +1,53 @@
+.alert {
+    border: 1px solid transparent;
+    border-right: 5px solid #444;
+    box-shadow: 2px 3px 12px rgba(17, 17, 17, 0.439);
+    background-color: #ffffff;
+    color: #444;
+    position: fixed;
+    top: 80px;
+    right: 0;
+    transform: translateX(100%);
+    text-transform: capitalize;
+    padding: 10px;
+    animation: slideError 5s forwards;
+    z-index: 1000;
+    pointer-events: all;
+}
+.alert:hover {
+    animation-play-state: paused;
+    border-color: #444;
+}
+.alert.msg {
+    color: #444;
+}
+.alert.loading {
+    color: #00649a;
+}
+.alert.success {
+    color: #009a2c;
+}
+.alert.error {
+    color: #e42200;
+}
+@keyframes slideError {
+    0% {
+        transform: translateX(-5px);
+    }
+    4% {
+        transform: translateX(-20px);
+    }
+    6% {
+        transform: translateX(-5px);
+    }
+    92% {
+        transform: translateX(-5px);
+    }
+    94% {
+        transform: translateX(-20px);
+    }
+    96% {
+        transform: translateX(-5px);
+        display: none;
+    }
+}

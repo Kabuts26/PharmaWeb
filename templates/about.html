@@ -1,0 +1,166 @@
+{% extends'header.html' %}
+
+{% block content %}
+<style>
+	.name{
+		font-family: sans-serif;
+		text-align: center;
+	}
+
+	/* Create two equal columns that floats next to each other */
+		.column {
+		float: left;
+		width: 50%;
+		padding: 10px;
+	}
+
+	.column img { object-fit: cover; }
+
+	/* Clear floats after the columns */
+	.row1:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.row1{
+		border-top: double;
+	}
+	.img{
+		display: block;
+  		margin-left: auto;
+  		margin-right: auto;
+	}
+</style>
+
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+    	<!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">DEVELOPERS: GROUP 404
+                </h2>
+            </div>
+        </div>
+
+		<div class="about">
+
+			<div class="row1">
+				<div class="column">
+					<img class="img" src="{{url_for('static', filename='clive.jpg') }}" alt="Clive Saludes" width="250" height="250">
+				</div>
+				<div class="column">
+				<span class="name"><h3>Clive Denzer Saludes</h3></span>
+					<br>
+					<div class="description">
+						<p>He is the leader of this team, he handled some of the functions in our web app, and designed and developed the database. He lives in Luisiana, Laguna and spends most of his time helping his parents with their house chores. He also spends his time with playing mobile games, cycling, and doing recreational activities</p>
+					</div>
+					<br>
+					<div class="contribution">
+						<p><b>Contribution:</b>
+							<span style="padding-left: 20px; display:block">
+								Login Panel<br>
+								Add Item Panel<br>
+								Counter at Item Panel<br>
+								Change Password
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row1">
+				<div class="column">
+					<img class="img" src="{{url_for('static', filename='Carlo.jpg') }}" alt="Carlo Agarao" width="250" height="250">
+				</div>
+				<div class="column">
+				<span class="name"><h3>Carlo Agarao</h3></span>
+					<br>
+					<div class="description">
+						<p>He is one of the developers in the team who handled the edit and delete function in the Item page. He lives in Sta. Cruz Laguna and spends the majority of his time watching anime, studying, and playing the guitar. One of his unique attributes is by being an observant person, having this attribute really helps the team identify the core problems of the web app.</p>
+					</div>
+					<br>
+					<div class="contribution">
+						<p><b>Contribution:</b>
+							<span style="padding-left: 20px; display:block">
+								Delete and Edit Funtion at Item Panel
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row1">
+				<div class="column">
+					<img class="img" src="{{url_for('static', filename='Jomarie.jpg') }}" alt="Jomarie Canaria" width="250" height="250">
+				</div>
+				<div class="column">
+				<span class="name"><h3>Jomarie Canaria</h3></span>
+					<br>
+					<div class="description">
+						<p>Jomarie Canaria is one of the developers in the team who handled the Expired page. He lives in Sta. Cruz, Laguna and he spends his free time by playing mobile games, reading, and watching anime. Motivating others is one of his key strengths, and being a team morale booster is one of the key qualities of being part of a team.</p>
+					</div>
+					<br>
+					<div class="contribution">
+						<p><b>Contribution:</b>
+							<span style="padding-left: 20px; display:block">
+								Expired Panel
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row1">
+				<div class="column">
+					<img class="img" src="{{url_for('static', filename='Dreico.jpg') }}" alt="Dreico Karlo Librodo" width="250" height="250">
+				</div>
+				<div class="column">
+				<span class="name"><h3>Dreico Karlo Librodo</h3></span>
+					<br>
+					<div class="description">
+						<p>Dreico Karlo Librodo is one of the developers in the team who handled the Item List page.<br>
+							He lives in Pagsanjan, Laguna living a simple life and he spends the most of his time playing video games, reading books and journals, and composing short tales, among other things.
+							One of his remarkable skill and probably what he's best in is debugging. If you can debug the program in less than 30 minutes, he will debug it twice faster than that.</p>
+					</div>
+					<br>
+					<div class="contribution">
+						<p><b>Contribution:</b>
+							<span style="padding-left: 20px; display:block">
+								Displaying items at Item List Page
+								Checking the grammar and spelling of the system
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row1">
+				<div class="column">
+					<img class="img" src="{{url_for('static', filename='Michael.png') }}" alt="Michael Jay Virtucio" width="250" height="250">
+				</div>
+				<div class="column">
+				<span class="name"><h3>Michael Jay Virtucio</h3></span>
+					<br>
+					<div class="description">
+						<p>He is one of the developers in the team who handled most of the retrieving data functions of the web app. He lives in Calauan, Laguna and he spends his free time by playing mobile games, watching movies and animes, and sometimes coding. One of his outstanding skills is being a fast learner especially when it comes to programming.</p>
+					</div>
+					<br>
+					<div class="contribution">
+						<p><b>Contribution:</b>
+							<span style="padding-left: 20px; display:block">
+								InStock Panel<br>
+								Out of Stock Panel<br>
+								Nearly Out of Stock Panel
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<br><br><br><br>
+</div>
+{% endblock %}

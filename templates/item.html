@@ -1,0 +1,215 @@
+{% extends'header.html' %}
+
+{% block content %}
+<style>
+    .counter td {
+        border-style: solid;
+        border: solid;
+        padding: 20px;
+    }
+
+    .counter-title {
+        margin: 20px;
+        font-family: sans-serif;
+        font-size: medium;
+    }
+
+    .count {
+        font-size: x-large;
+    }
+
+    .cards {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .card {
+        min-width: 130px;
+        min-height: 60px;
+        box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.27);
+        border-radius: 6px;
+        text-align: center;
+        padding: 10px 20px;
+        color: black;
+        text-decoration: none;
+        transition: transform 300ms;
+    }
+
+    .card:hover {
+        transform: scale(1.04);
+    }
+
+    a:link,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+        color: black;
+    }
+
+    .card-numer {
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    .card.in-stock {
+        background-color: #00ff7b;
+    }
+
+    .card.nearly-out-of-stock {
+        background-color: #ffbf00;
+    }
+
+    .card.out-of-stock {
+        background-color: #ff4d00;
+    }
+
+    .card.expired {
+        background-color: #a7a7a7;
+    }
+</style>
+
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Counter -->
+        <div class="cards">
+
+            <a href="{{ url_for('instock') }}" class="card in-stock">
+                <div class="card-text">In Stock</div>
+                <div class="card-numer ">{{ inStock }}</div>
+            </a>
+
+            <a href="{{ url_for('nearlystock') }}" class="card nearly-out-of-stock">
+                <div class="card-text">Nearly Out of Stock</div>
+                <div class="card-numer">{{ nealyOutOfStock }}</div>
+            </a>
+
+            <a href="{{ url_for('outstock') }}" class="card out-of-stock">
+                <div class="card-text">Out Of Stock</div>
+                <div class="card-numer">{{ outOfStock }}</div>
+            </a>
+
+            <a href="{{ url_for('expired') }}" class="card expired">
+                <div class="card-text">Expired</div>
+                <div class="card-numer">{{ expired }}</div>
+            </a>
+
+        </div>
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <h2 class="page-header">List of Stocks</h2>
+            </div>
+        </div>
+
+        <!-- /.row -->
+        <form method="post" id="del" action="/delete">
+            <button type="submit" class="btn btn-danger" id="del-stock" onclick="return myfunc()">Remove
+                Selected Item/s
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+
+            <br> <br>
+
+
+            <!-- table contentt -->
+            <div class="table-responsive">
+                <table id="myTable-item" class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <center></center>
+                            </th>
+                            <th>Item Code</th>
+                            <th>Generic Name</th>
+                            <th>Brand Name</th>
+                            <th>Type</th>
+                            <th>Unit</th>
+                            <th>Stock</th>
+                            <th>Volume</th>
+                            <th>
+                                <center>Price</center>
+                            </th>
+                            <th>Expired Date</th>
+                            <th>
+                                <center>Action</center>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        {% if item['expired'] > today %}
+                        <tr align="center">
+                            <td><input type="checkbox" class="chk" id="chk" name="chk" value="{{ item['item_id'] }}"></td>
+                            <td align="left">{{ item['item_code'] }}</td>
+                            <td align="left">{{ item['item_name'] }}</td>
+                            <td align="left">{{ item['brand_name'] }}</td>
+                            <td align="left">{{ item['type'] }}</td>
+                            <td align="left">{{ item['unit'] }}</td>
+                            <td align="left">{{ item['stock'] }}</td>
+                            <td align="left">{{ item['volume'] }}{{ item['vol'] }}</td>
+                            <td>{{ item['price'] }}</td>
+                            <td>{{ item['expired'] }}</td>
+                            <td>
+                                <center>
+                                    <a onclick="" href="{{ url_for('edit', id=item['item_id']) }}"
+                                        class="btn btn-warning btn-xs">Edit
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </a>
+                                </center>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        <script>
+                    function myfunc() {
+                        var checked = 0;
+ 
+                        //Reference the Table.
+                        var tbl = document.getElementById("myTable-item");
+              
+                        //Reference all the CheckBoxes in Table.
+                        var chks = tbl.getElementsByClassName("chk");
+ 
+                        //Loop and count the number of checked CheckBoxes.
+                        for (var i = 0; i < chks.length; i++) {
+                            if (chks[i].checked) {
+                                checked++;
+                            }
+                        }
+ 
+                        if (checked > 0) {
+                            return confirm("Are you sure you want to delete selected items?");
+                        } 
+                        else {
+                            return alert("Select an item to delete first");
+                        }
+                    };
+
+                    $(document).ready(function() {
+                        $('#myTable-item').DataTable();
+                    });
+                </script>
+    </div>
+</div>
+
+
+<br /><br /><br /><br /><br /><br /><br /><br />
+
+
+</div>
+<!-- /#page-wrapper -->
+
+{% endblock %}
